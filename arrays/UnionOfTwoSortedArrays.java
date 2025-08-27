@@ -1,9 +1,6 @@
 package arrays;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * n = 5,m = 5.
@@ -15,19 +12,16 @@ import java.util.Map;
 
 public class UnionOfTwoSortedArrays {
     public static List<Integer> unionOfTwoSortedArrays(int[] a, int[] b, int n, int m) {
-        Map<Integer, Integer> freqMap = new HashMap<>();
+        HashSet<Integer> set = new HashSet<>();
 
-        // For first array
-        for (int i = 0; i < n; i++) {
-            freqMap.put(a[i], freqMap.getOrDefault(freqMap.get(a[i]), 0) + 1);
+        for (int it : a) {
+            set.add(it);
+        }
+        for (int it : b) {
+            set.add(it);
         }
 
-        // For second array
-        for (int i = 0; i < m; i++) {
-            freqMap.put(b[i], freqMap.getOrDefault(freqMap.get(b[i]), 0) + 1);
-        }
-
-        return new ArrayList<>(freqMap.keySet());
+        return new ArrayList<>(set);
     }
 
     public static void main(String[] args) {
@@ -38,4 +32,22 @@ public class UnionOfTwoSortedArrays {
 
         System.out.println(mergedList.toString());
     }
+
+    // Using Map
+
+//    public static List<Integer> unionOfTwoSortedArrays(int[] a, int[] b, int n, int m) {
+//        Map<Integer, Integer> freqMap = new HashMap<>();
+//
+//        // For first array
+//        for (int i = 0; i < n; i++) {
+//            freqMap.put(a[i], freqMap.getOrDefault(freqMap.get(a[i]), 0) + 1);
+//        }
+//
+//        // For second array
+//        for (int i = 0; i < m; i++) {
+//            freqMap.put(b[i], freqMap.getOrDefault(freqMap.get(b[i]), 0) + 1);
+//        }
+//
+//        return new ArrayList<>(freqMap.keySet());
+//    }
 }
